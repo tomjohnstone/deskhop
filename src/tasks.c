@@ -70,7 +70,7 @@ void screensaver_task(device_t *state) {
     static int dx = 20, dy = 25;
 
     /* If we're not enabled, nothing to do here. */
-    if (!screensaver->enabled)
+    if (screensaver->mode == DISABLED)
         return;
 
     /* System is still not idle for long enough to activate or we've been running for too long */
@@ -91,10 +91,10 @@ void screensaver_task(device_t *state) {
         return;
 
     /* Check if we are bouncing off the walls and reverse direction in that case. */
-    if (report.x + dx < MIN_SCREEN_COORD || report.x + dx > MAX_SCREEN_COORD)
+    if (screensaver->mode == JITTER || report.x + dx < MIN_SCREEN_COORD || report.x + dx > MAX_SCREEN_COORD)
         dx = -dx;
 
-    if (report.y + dy < MIN_SCREEN_COORD || report.y + dy > MAX_SCREEN_COORD)
+    if (screensaver->mode == JITTER || report.y + dy < MIN_SCREEN_COORD || report.y + dy > MAX_SCREEN_COORD)
         dy = -dy;
 
     report.x += dx;
