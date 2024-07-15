@@ -185,7 +185,7 @@ typedef struct {
 
 /*********  Configuration storage definitions  **********/
 
-#define CURRENT_CONFIG_VERSION 7
+#define CURRENT_CONFIG_VERSION 8
 
 enum os_type_e {
     LINUX   = 1,
