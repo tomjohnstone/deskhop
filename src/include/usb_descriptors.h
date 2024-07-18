@@ -26,16 +26,16 @@
 #define USB_DESCRIPTORS_H_
 
 // Interface 0
-#define REPORT_ID_KEYBOARD 1
-#define REPORT_ID_MOUSE    2
-#define REPORT_ID_CONSUMER 3
-#define REPORT_ID_SYSTEM   4
+#define REPORT_ID_KEYBOARD 0
+#define REPORT_ID_MOUSE    0
+#define REPORT_ID_CONSUMER 0
+#define REPORT_ID_SYSTEM   0
 
 // Interface 1
-#define REPORT_ID_RELMOUSE 5
+#define REPORT_ID_RELMOUSE 0
 
 // Interface 2
-#define REPORT_ID_VENDOR 6
+#define REPORT_ID_VENDOR 0
 
 
 #define DEVICE_DESCRIPTOR(vid, pid) \
