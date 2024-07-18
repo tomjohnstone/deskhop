@@ -31,7 +31,7 @@
 #define REPORT_ID_SYSTEM   3
 
 // Interface 1
-#define REPORT_ID_KEYBOARD 4
+#define REPORT_ID_KEYBOARD 0
 
 // Interface 2
 #define REPORT_ID_RELMOUSE 5
