@@ -52,15 +52,15 @@ uint8_t const *tud_descriptor_device_cb(void) {
 
 // Relative mouse is used to overcome limitations of multiple desktops on MacOS and Windows
 
-uint8_t const desc_hid_report[] = {TUD_HID_REPORT_DESC_KEYBOARD(HID_REPORT_ID(REPORT_ID_KEYBOARD)),
+uint8_t const desc_hid_report[] = {TUD_HID_REPORT_DESC_KEYBOARD(),
                                    //TUD_HID_REPORT_DESC_ABS_MOUSE(HID_REPORT_ID(REPORT_ID_MOUSE)),
-                                   TUD_HID_REPORT_DESC_CONSUMER_CTRL(HID_REPORT_ID(REPORT_ID_CONSUMER)),
-                                   TUD_HID_REPORT_DESC_SYSTEM_CONTROL(HID_REPORT_ID(REPORT_ID_SYSTEM))
+                                   TUD_HID_REPORT_DESC_CONSUMER_CTRL(),
+                                   TUD_HID_REPORT_DESC_SYSTEM_CONTROL()
                                    };
 
-uint8_t const desc_hid_report_relmouse[] = {TUD_HID_REPORT_DESC_MOUSE(HID_REPORT_ID(REPORT_ID_RELMOUSE))};
+uint8_t const desc_hid_report_relmouse[] = {TUD_HID_REPORT_DESC_MOUSE()};
 
-uint8_t const desc_hid_report_vendor[] = {TUD_HID_REPORT_DESC_VENDOR_CTRL(HID_REPORT_ID(REPORT_ID_VENDOR))};
+uint8_t const desc_hid_report_vendor[] = {TUD_HID_REPORT_DESC_VENDOR_CTRL()};
 
 
 // Invoked when received GET HID REPORT DESCRIPTOR
