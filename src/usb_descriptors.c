@@ -75,7 +75,7 @@ uint8_t const *tud_hid_descriptor_report_cb(uint8_t instance) {
     switch(instance) {
         case ITF_NUM_HID:
             return desc_hid_report;
-        case ITF_NUM_KBD:
+        case ITF_NUM_HID_KBD:
             return desc_hid_report_keyboard;
         case ITF_NUM_HID_REL_M:
             return desc_hid_report_relmouse;        
