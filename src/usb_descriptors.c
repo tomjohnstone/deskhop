@@ -173,7 +173,7 @@ uint16_t const *tud_descriptor_string_cb(uint8_t index, uint16_t langid) {
 //--------------------------------------------------------------------+
 
 #define EPNUM_HID        0x81
-#define EPNUM_KBD        0x82
+#define EPNUM_HID_KBD    0x82
 #define EPNUM_HID_REL_M  0x83
 #define EPNUM_HID_VENDOR 0x84
 
@@ -219,7 +219,7 @@ uint8_t const desc_configuration[] = {
                        STRID_KEYBOARD,
                        HID_ITF_PROTOCOL_NONE,
                        sizeof(desc_hid_report_keyboard),
-                       EPNUM_KBD,
+                       EPNUM_HID_KBD,
                        CFG_TUD_HID_EP_BUFSIZE,
                        1),
 
@@ -254,7 +254,7 @@ uint8_t const desc_configuration_config[] = {
                        STRID_KEYBOARD,
                        HID_ITF_PROTOCOL_NONE,
                        sizeof(desc_hid_report_keyboard),
-                       EPNUM_KBD,
+                       EPNUM_HID_KBD,
                        CFG_TUD_HID_EP_BUFSIZE,
                        1),
 
