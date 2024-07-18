@@ -67,11 +67,11 @@ void process_uart_tx_task(device_t *state) {
 const uart_handler_t uart_handler[] = {
     /* Core functions */
     {.type = KEYBOARD_REPORT_MSG, .handler = handle_keyboard_uart_msg},
-    {.type = MOUSE_REPORT_MSG, .handler = handle_mouse_abs_uart_msg},
+    //{.type = MOUSE_REPORT_MSG, .handler = handle_mouse_abs_uart_msg},
     {.type = OUTPUT_SELECT_MSG, .handler = handle_output_select_msg},
     
     /* Box control */
-    {.type = MOUSE_ZOOM_MSG, .handler = handle_mouse_zoom_msg},
+    //{.type = MOUSE_ZOOM_MSG, .handler = handle_mouse_zoom_msg},
     {.type = KBD_SET_REPORT_MSG, .handler = handle_set_report_msg},
     {.type = SWITCH_LOCK_MSG, .handler = handle_switch_lock_msg},
     {.type = SYNC_BORDERS_MSG, .handler = handle_sync_borders_msg},

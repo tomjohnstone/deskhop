@@ -53,7 +53,7 @@ uint8_t const *tud_descriptor_device_cb(void) {
 // Relative mouse is used to overcome limitations of multiple desktops on MacOS and Windows
 
 uint8_t const desc_hid_report[] = {TUD_HID_REPORT_DESC_KEYBOARD(HID_REPORT_ID(REPORT_ID_KEYBOARD)),
-                                   TUD_HID_REPORT_DESC_ABS_MOUSE(HID_REPORT_ID(REPORT_ID_MOUSE)),
+                                   //TUD_HID_REPORT_DESC_ABS_MOUSE(HID_REPORT_ID(REPORT_ID_MOUSE)),
                                    TUD_HID_REPORT_DESC_CONSUMER_CTRL(HID_REPORT_ID(REPORT_ID_CONSUMER)),
                                    TUD_HID_REPORT_DESC_SYSTEM_CONTROL(HID_REPORT_ID(REPORT_ID_SYSTEM))
                                    };
@@ -82,7 +82,7 @@ uint8_t const *tud_hid_descriptor_report_cb(uint8_t instance) {
 }
 
 bool tud_mouse_report(uint8_t mode, uint8_t buttons, int16_t x, int16_t y, int8_t wheel) {
-
+return false;
     if (mode == ABSOLUTE) {
         mouse_report_t report = {.buttons = buttons, .x = x, .y = y, .wheel = wheel};
         return tud_hid_n_report(ITF_NUM_HID, REPORT_ID_MOUSE, &report, sizeof(report));
@@ -209,6 +209,7 @@ uint8_t const desc_configuration[] = {
                        CFG_TUD_HID_EP_BUFSIZE,
                        1),
 
+#if 0
     TUD_HID_DESCRIPTOR(ITF_NUM_HID_REL_M,
                        STRID_MOUSE,
                        HID_ITF_PROTOCOL_NONE,
@@ -216,6 +217,8 @@ uint8_t const desc_configuration[] = {
                        EPNUM_HID_REL_M,
                        CFG_TUD_HID_EP_BUFSIZE,
                        1),
+#endif
+
 #ifdef DH_DEBUG
     // Interface number, string index, EP notification address and size, EP data address (out, in) and size.
     TUD_CDC_DESCRIPTOR(
