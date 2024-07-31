@@ -148,11 +148,11 @@ void process_kbd_queue_task(device_t *state) {
         tud_remote_wakeup();
 
     /* If it's not ok to send yet, we'll try on the next pass */
-    if (!tud_hid_n_ready(ITF_NUM_HID))
+    if (!tud_hid_n_ready(ITF_NUM_HID_KBD))
         return;
 
     /* ... try sending it to the host, if it's successful */
-    bool succeeded = tud_hid_keyboard_report(REPORT_ID_KEYBOARD, report.modifier, report.keycode);
+    bool succeeded = tud_hid_n_keyboard_report(ITF_NUM_HID_KBD, REPORT_ID_KEYBOARD, report.modifier, report.keycode);
 
     /* ... then we can remove it from the queue. Race conditions shouldn't happen [tm] */
     if (succeeded)
@@ -185,7 +185,7 @@ void send_key(hid_keyboard_report_t *report, device_t *state) {
 /* Decide if consumer control reports go local or to the other board */
 void send_consumer_control(uint8_t *raw_report, device_t *state) {
     if (CURRENT_BOARD_IS_ACTIVE_OUTPUT) {
-        tud_hid_n_report(0, REPORT_ID_CONSUMER, raw_report, CONSUMER_CONTROL_LENGTH);
+        tud_hid_n_report(ITF_NUM_HID, REPORT_ID_CONSUMER, raw_report, CONSUMER_CONTROL_LENGTH);
         state->last_activity[BOARD_ROLE] = time_us_64();
     } else {
         queue_packet((uint8_t *)raw_report, CONSUMER_CONTROL_MSG, CONSUMER_CONTROL_LENGTH);
@@ -195,7 +195,7 @@ void send_consumer_control(uint8_t *raw_report, device_t *state) {
 /* Decide if consumer control reports go local or to the other board */
 void send_system_control(uint8_t *raw_report, device_t *state) {
     if (CURRENT_BOARD_IS_ACTIVE_OUTPUT) {
-        tud_hid_n_report(0, REPORT_ID_SYSTEM, raw_report, SYSTEM_CONTROL_LENGTH);
+        tud_hid_n_report(ITF_NUM_HID, REPORT_ID_SYSTEM, raw_report, SYSTEM_CONTROL_LENGTH);
         state->last_activity[BOARD_ROLE] = time_us_64();
     } else {
         queue_packet((uint8_t *)raw_report, SYSTEM_CONTROL_MSG, SYSTEM_CONTROL_LENGTH);

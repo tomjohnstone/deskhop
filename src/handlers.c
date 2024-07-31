@@ -201,7 +201,7 @@ void handle_wipe_config_msg(uart_packet_t *packet, device_t *state) {
 
 /* Process consumer control message, TODO: use queue instead of sending directly */
 void handle_consumer_control_msg(uart_packet_t *packet, device_t *state) {
-    tud_hid_n_report(0, REPORT_ID_CONSUMER, &packet->data[0], CONSUMER_CONTROL_LENGTH);
+    tud_hid_n_report(ITF_NUM_HID, REPORT_ID_CONSUMER, &packet->data[0], CONSUMER_CONTROL_LENGTH);
 }
 
 /* Process request to store config to flash */
